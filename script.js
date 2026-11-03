@@ -9,7 +9,7 @@ const wishButton = document.querySelector("#wishButton");
 const wishText = document.querySelector("#wish");
 const musicButton = document.querySelector("#musicButton");
 const music = document.querySelector("#backgroundMusic");
-const wishes = ["Ты самая красивая 🌷", "Ты делаешь мой мир ярче ✨", "Ты моё солнышко ☀️", "Твоя улыбка — моё любимое чудо 💕", "Пусть сегодня сбудется всё, о чём ты мечтаешь 🦋", "Ты прекрасна — просто помни об этом 💖", "С тобой даже обычный день становится особенным 🌸"];
+const wishes = ["Ты самая красивая 🌷", "Ты делаешь мой мир ярче ✨", "Твоя улыбка — моё любимое чудо 💕", "Пусть сегодня сбудется всё, о чём ты мечтаешь 🦋", "Ты прекрасна — просто помни об этом 💖", "С тобой даже обычный день становится особенным 🌸"];
 const colors = ["#ff74a8", "#fa5f78", "#c48be8", "#ff9fc5", "#f7d1ed"];
 const particles = [];
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -33,7 +33,8 @@ function addParticle(particle) { if (particles.length < 260) particles.push(part
 
 function makeHeart(x, y, options = {}) {
   const life = options.life ?? random(1.8, 3.8);
-  return { type: "heart", x, y, size: options.size ?? random(8, 18), color: options.color ?? colors[Math.floor(Math.random() * colors.length)], alpha: options.alpha ?? random(.55, .95), baseAlpha: options.alpha ?? random(.55, .95), life, vx: options.vx ?? random(-38, 38), vy: options.vy ?? random(-95, -35), sway: random(10, 34), swaySpeed: random(1.4, 3.8), rotation: random(-.45, .45), rotationSpeed: random(-1.2, 1.2), age: 0 };
+  const alpha = options.alpha ?? random(.55, .95);
+  return { type: "heart", x, y, size: options.size ?? random(8, 18), color: options.color ?? colors[Math.floor(Math.random() * colors.length)], alpha, baseAlpha: alpha, life, vx: options.vx ?? random(-38, 38), vy: options.vy ?? random(-95, -35), sway: random(10, 34), swaySpeed: random(1.4, 3.8), rotation: random(-.45, .45), rotationSpeed: random(-1.2, 1.2), age: 0 };
 }
 function makeSparkle(x, y) {
   const life = random(.5, 1.1);
@@ -41,7 +42,8 @@ function makeSparkle(x, y) {
 }
 function makePetal() {
   const life = random(7, 12);
-  return { type: "petal", x: random(0, width), y: -30, size: random(8, 16), color: Math.random() > .5 ? "#e985ae" : "#f4abc4", alpha: random(.52, .78), baseAlpha: random(.52, .78), life, vx: random(-18, 18), vy: random(24, 55), sway: random(25, 70), swaySpeed: random(.7, 1.8), rotation: random(0, Math.PI), rotationSpeed: random(-1.4, 1.4), age: 0 };
+  const alpha = random(.52, .78);
+  return { type: "petal", x: random(0, width), y: -30, size: random(8, 16), color: Math.random() > .5 ? "#e985ae" : "#f4abc4", alpha, baseAlpha: alpha, life, vx: random(-18, 18), vy: random(24, 55), sway: random(25, 70), swaySpeed: random(.7, 1.8), rotation: random(0, Math.PI), rotationSpeed: random(-1.4, 1.4), age: 0 };
 }
 function burst(x, y, count = 20) {
   for (let index = 0; index < count; index += 1) {
