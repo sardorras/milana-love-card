@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8dbea">
+  <meta name="description" content="Романтическая открытка для Миланы от Хасиба">
+  <title>Для Миланы 💌</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <canvas id="effects" aria-hidden="true"></canvas>
+
+  <main class="scene">
+    <div class="sparkle sparkle--one" aria-hidden="true">✦</div>
+    <div class="sparkle sparkle--two" aria-hidden="true">✧</div>
+    <div class="sparkle sparkle--three" aria-hidden="true">✦</div>
+    <div class="sparkle sparkle--four" aria-hidden="true">✧</div>
+
+    <section class="envelope-view" id="envelopeView" aria-label="Закрытый конверт">
+      <button class="envelope" id="openEnvelope" type="button" aria-label="Открыть открытку для Миланы">
+        <span class="envelope__back"></span>
+        <span class="envelope__letter">
+          <span class="envelope__letter-heart">♥</span>
+        </span>
+        <span class="envelope__front"></span>
+        <span class="envelope__flap"></span>
+        <span class="envelope__label">Для Миланы <span aria-hidden="true">💌</span></span>
+      </button>
+      <p class="open-hint">Нажми, чтобы открыть <span aria-hidden="true">♡</span></p>
+    </section>
+
+    <section class="card-view" id="cardView" aria-label="Открытка для Миланы" aria-hidden="true">
+      <div class="card">
+        <p class="card__eyebrow">Маленькое письмо для тебя</p>
+
+        <div class="heart-wrap">
+          <div class="orbit orbit--one" aria-hidden="true"><span>♥</span></div>
+          <div class="orbit orbit--two" aria-hidden="true"><span>♥</span></div>
+          <div class="orbit orbit--three" aria-hidden="true"><span>♥</span></div>
+
+          <svg class="big-heart" viewBox="0 0 300 280" role="img" aria-label="Розовое сердце">
+            <defs>
+              <linearGradient id="heartGradient" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#ff91b9"/>
+                <stop offset="55%" stop-color="#f36a9c"/>
+                <stop offset="100%" stop-color="#d94f91"/>
+              </linearGradient>
+              <filter id="heartShadow" x="-35%" y="-35%" width="170%" height="180%">
+                <feGaussianBlur in="SourceAlpha" stdDeviation="9"/>
+                <feOffset dy="9"/>
+                <feComponentTransfer>
+                  <feFuncA type="linear" slope="0.22"/>
+                </feComponentTransfer>
+                <feMerge>
+                  <feMergeNode/>
+                  <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+              </filter>
+            </defs>
+            <path
+              d="M150 258 C128 237 25 163 25 87 C25 30 98 9 150 66 C202 9 275 30 275 87 C275 163 172 237 150 258Z"
+              fill="url(#heartGradient)"
+              filter="url(#heartShadow)"
+            />
+            <path
+              d="M75 60 C93 41 117 44 131 57"
+              fill="none"
+              stroke="#fff"
+              stroke-linecap="round"
+              stroke-width="7"
+              opacity=".35"
+            />
+          </svg>
+
+          <div class="heart-name" id="heartName" aria-label="Милана">
+            <span>М</span><span>и</span><span>л</span><span>а</span><span>н</span><span>а</span>
+          </div>
+          <span class="heart-glint" aria-hidden="true">✦</span>
+        </div>
+
+        <p class="card__signature">С любовью, Хасиб <span aria-hidden="true">❤️</span></p>
+
+        <div class="wish-area" aria-live="polite">
+          <p class="wish" id="wish">Ты делаешь этот мир нежнее ✨</p>
+        </div>
+
+        <button class="wish-button" id="wishButton" type="button">Нажми на меня 💖</button>
+      </div>
+    </section>
+
+    <button class="music-button" id="musicButton" type="button" aria-pressed="false" aria-label="Включить музыку">
+      <span aria-hidden="true">♫</span>
+      <span class="music-button__text">Музыка: выкл.</span>
+    </button>
+    <audio id="backgroundMusic" src="music.mp3" loop preload="none"></audio>
+  </main>
+</body>
+</html>
